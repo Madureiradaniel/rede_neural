@@ -1,4 +1,5 @@
 from random import *
+import math
 
 class Matriz(object):
 
@@ -10,11 +11,32 @@ class Matriz(object):
         for i in range(self.linhas):
             self.matriz.append([])
             for j in range(self.colunas):
-                self.matriz[i].append(randrange(1,8))
+                self.matriz[i].append(random())
 
     def printMatriz(self):
         for i in self.matriz:
             print(i)
+
+    def __sigmoide(self, x):
+        x = 1/(1 + math.exp(-x))
+        return x
+
+    def aplicarSigmoid(self):
+        for i in range(self.linhas):
+            for j in range(self.colunas):
+                self.matriz[i][j] = self.__sigmoide(self.matriz[i][j])
+
+    def transporMatriz(self):
+
+        transposta = Matriz(self.colunas,self.linhas)
+        for i in range(self.linhas):
+            for j in range(self.colunas):
+                transposta.matriz[j][i] = self.matriz[i][j]
+
+        self.matriz = transposta.matriz
+        self.linhas = transposta.linhas
+        self.colunas = transposta.colunas
+        del transposta
 
     @staticmethod
     def somarDuasMatriz(m1, m2):
@@ -45,6 +67,18 @@ class Matriz(object):
                     #print("---------debug------")
                     #m3.printMatriz()
         return m3
+
+    @staticmethod
+    def array2matriz(lista):
+        m1 = Matriz(len(lista), 1)
+
+        for i in range(m1.linhas):
+            for j in range(m1.colunas):
+                m1.matriz[i][j] = lista[i]
+
+        return m1
+
+
 
 
 
