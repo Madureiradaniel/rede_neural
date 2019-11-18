@@ -26,17 +26,40 @@ class Matriz(object):
             for j in range(self.colunas):
                 self.matriz[i][j] = self.__sigmoide(self.matriz[i][j])
 
-    def transporMatriz(self):
 
-        transposta = Matriz(self.colunas,self.linhas)
-        for i in range(self.linhas):
-            for j in range(self.colunas):
-                transposta.matriz[j][i] = self.matriz[i][j]
+    @staticmethod
+    def transporMatriz(m1):
 
-        self.matriz = transposta.matriz
-        self.linhas = transposta.linhas
-        self.colunas = transposta.colunas
-        del transposta
+        transposta = Matriz(m1.colunas,m1.linhas)
+        for i in range(m1.linhas):
+            for j in range(m1.colunas):
+                transposta.matriz[j][i] = m1.matriz[i][j]
+
+        return transposta
+
+    @staticmethod
+    def produtoEscalar(m1, escalar):
+
+        linhas = len(m1.matriz)
+        colunas = len(m1.matriz[0])
+        m3 = Matriz(linhas,colunas)
+
+        for i in range(linhas):
+            for j in range(colunas):
+                m3.matriz[i][j] = m1.matriz[i][j] * escalar
+        return m3
+
+    @staticmethod
+    def hadamard(m1, m2):
+
+        linhas = len(m1.matriz)
+        colunas = len(m1.matriz[0])
+        m3 = Matriz(linhas,colunas)
+
+        for i in range(linhas):
+            for j in range(colunas):
+                m3.matriz[i][j] = m1.matriz[i][j] * m2.matriz[i][j]
+        return m3
 
     @staticmethod
     def somarDuasMatriz(m1, m2):
@@ -48,6 +71,18 @@ class Matriz(object):
         for i in range(linhas):
             for j in range(colunas):
                 m3.matriz[i][j] = m1.matriz[i][j] + m2.matriz[i][j]
+        return m3
+
+    @staticmethod
+    def subtrairMatriz(m1, m2):
+
+        linhas = len(m1.matriz)
+        colunas = len(m1.matriz[0])
+        m3 = Matriz(linhas,colunas)
+
+        for i in range(linhas):
+            for j in range(colunas):
+                m3.matriz[i][j] = m1.matriz[i][j] - m2.matriz[i][j]
         return m3
 
     @staticmethod

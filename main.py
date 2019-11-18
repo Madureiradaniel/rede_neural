@@ -2,7 +2,9 @@ from redeNeural import NeuralNetwork
 from matriz import *
 
 """ entrada, oculta e saida"""
-redeNeural = NeuralNetwork(1,3,1)
-lista = [6, 3, 4, 5, 1]
+redeNeural = NeuralNetwork(1, 3, 2, 0.1)
 
-redeNeural.feedforward(lista)
+lista = [1, 2]
+
+redeNeural.backpropagation(lista, [0, 1])
+
