@@ -25,6 +25,24 @@ class NeuralNetwork(object):
         self.pesos_oculta_saida = Matriz(self.nos_saida, self.nos_oculto)
         self.pesos_oculta_saida.printMatriz()
 
+    def feedfoward(self, lista):
+
+        entrada = Matriz.array2matriz(lista)
+        """ CAMADA DE ENTRADA PARA CAMADA OCULTA"""
+        #print("\n------ CAMADA ENTRADA => CAMADA OCULTA -----")
+        camada_oculta = Matriz.multiplicaDuasMatriz(self.pesos_entrada_oculta, entrada)
+        camada_oculta = Matriz.somarDuasMatriz(camada_oculta, self.bias_entrada_oculta)
+        camada_oculta.aplicarSigmoid()
+        #camada_oculta.printMatriz()
+
+        """ CAMADA OCULTA PARA CAMADA DE SAIDA"""
+        #print("\n------CAMADA OCULTA -> CAMADA SAIDA-----")
+        camada_saida = Matriz.multiplicaDuasMatriz(self.pesos_oculta_saida, camada_oculta)
+        camada_saida = Matriz.somarDuasMatriz(camada_saida, self.bias_oculta_saida)
+        camada_saida.aplicarSigmoid()
+        #camada_saida.printMatriz()
+
+        return camada_saida.matriz
 
     def backpropagation(self, entrada, esperado):
         """transformando a entrada em matriz"""
@@ -50,7 +68,7 @@ class NeuralNetwork(object):
 
         """SAIDA P/ OCULTA"""
         """calculo do erro"""
-        erro_de_saida  = Matriz.subtrairMatriz(esperado, entrada)
+        erro_de_saida  = Matriz.subtrairMatriz(esperado, camada_saida)
         #erro_de_saida.printMatriz()
 
         derivada_da_saida = self.derivadaElementosMatriz(camada_saida)
@@ -62,7 +80,10 @@ class NeuralNetwork(object):
 
         """aplicando learning_rate"""
         gradiente = Matriz.produtoEscalar(gradiente, self.learning_rate)
-        gradiente.printMatriz()
+
+        """AJUSTAR BIA"""
+        self.bias_oculta_saida = Matriz.somarDuasMatriz(self.bias_oculta_saida, gradiente)
+
 
         """multiplicando pela camada oculta transposta"""
         oculta_transposta = Matriz.transporMatriz(camada_oculta)
@@ -75,7 +96,20 @@ class NeuralNetwork(object):
         """CAMADA OCULTA P/ ENTRADA """
         peso_oculta_saida_transposta = Matriz.transporMatriz(self.pesos_oculta_saida)
         erro_oculta = Matriz.multiplicaDuasMatriz(peso_oculta_saida_transposta, erro_de_saida)
-        erro_oculta.printMatriz()
+        #erro_oculta.printMatriz()
+
+        """aplicando derivada camada oculta"""
+        derivada_camada_oculta = self.derivadaElementosMatriz(camada_oculta)
+        entrada_transposta = Matriz.transporMatriz(entrada)
+
+        gradiente_oculta = Matriz.hadamard(erro_oculta, derivada_camada_oculta)
+        gradiente_oculta = Matriz.produtoEscalar(gradiente_oculta, self.learning_rate)
+
+        """AJUSTAR BIA"""
+        self.bias_entrada_oculta = Matriz.somarDuasMatriz(self.bias_entrada_oculta, gradiente_oculta)
+
+        gradiente_oculta = Matriz.multiplicaDuasMatriz(gradiente_oculta, entrada_transposta)
+        self.pesos_entrada_oculta = Matriz.somarDuasMatriz(self.pesos_entrada_oculta, gradiente_oculta)
 
 
     """derivada sigmoid  = sigmoid * (1 - sigmoid) """

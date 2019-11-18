@@ -64,8 +64,8 @@ class Matriz(object):
     @staticmethod
     def somarDuasMatriz(m1, m2):
 
-        linhas = len(m1.matriz)
-        colunas = len(m1.matriz[0])
+        linhas = m1.linhas
+        colunas = m1.colunas
         m3 = Matriz(linhas,colunas)
 
         for i in range(linhas):
