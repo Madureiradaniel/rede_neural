@@ -42,7 +42,7 @@ class NeuralNetwork(object):
         camada_saida.aplicarSigmoid()
         #camada_saida.printMatriz()
 
-        return camada_saida.matriz
+        return camada_saida
 
     def backpropagation(self, entrada, esperado):
         """transformando a entrada em matriz"""
