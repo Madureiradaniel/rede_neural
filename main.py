@@ -1,13 +1,49 @@
 from redeNeural import NeuralNetwork
 from matriz import *
 
-"""xor"""
-entrada = [[0, 0], [0, 1], [1, 0], [1, 1]]
-saida = [[0], [1], [1], [0]]
-""""""
+entrada = []
+saida = []
+
+print("================================================")
+print("        PORTAS LÓGICAS REDES NEURAIS   ")
+print("================================================")
+print("1 - AND")
+print("2 - OR")
+print("3 - XOR")
+print("4 - NAND")
+print("5 - XNOR")
+
+op = int(input())
+
+if op == 1:
+    """AND"""
+    entrada = [[0, 0], [0, 1], [1, 0], [1, 1]]
+    saida = [[0], [0], [0], [1]]
+    """"""
+elif op == 2:
+    """OR"""
+    entrada = [[0, 0], [0, 1], [1, 0], [1, 1]]
+    saida = [[0], [1], [1], [1]]
+    """"""
+elif op == 3:
+    """xor"""
+    entrada = [[0, 0], [0, 1], [1, 0], [1, 1]]
+    saida = [[0], [1], [1], [0]]
+    """"""
+elif op == 4:
+    """NAND"""
+    entrada = [[0, 0], [0, 1], [1, 0], [1, 1]]
+    saida = [[1], [1], [1], [0]]
+    """"""
+elif op == 5:
+    """XNOR"""
+    entrada = [[0, 0], [0, 1], [1, 0], [1, 1]]
+    saida = [[1], [0], [0], [1]]
+    """"""
+
 
 qtd_camadas_ocultas = 3
-criterio_parada = 0.01  # todos os elementos devem ter apenas essa diferenca da sua saida
+criterio_parada = 0.05  # todos os elementos devem ter apenas essa diferenca da sua saida
 
 """ entrada, oculta, saida, learning reate"""
 redeNeural = NeuralNetwork(len(entrada[0]), qtd_camadas_ocultas, len(saida[0]), 0.1)
