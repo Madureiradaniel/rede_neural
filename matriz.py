@@ -104,7 +104,7 @@ class Matriz(object):
         return m3
 
     @staticmethod
-    def array2matriz(lista):
+    def array2object(lista):
         m1 = Matriz(len(lista), 1)
 
         for i in range(m1.linhas):

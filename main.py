@@ -64,7 +64,7 @@ while (treino):
     """todos os elementos devem ter o erro em relacao a saida menor que o valor passado"""
     erro = []
     for i in range(len(saida)):
-        erro_saida = Matriz.subtrairMatriz(Matriz.array2matriz(saida[i]), redeNeural.feedfoward(entrada[i])).matriz
+        erro_saida = Matriz.subtrairMatriz(Matriz.array2object(saida[i]), redeNeural.feedfoward(entrada[i])).matriz
 
         for j in erro_saida:
             for k in j:

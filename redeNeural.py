@@ -27,7 +27,7 @@ class NeuralNetwork(object):
 
     def feedfoward(self, lista):
 
-        entrada = Matriz.array2matriz(lista)
+        entrada = Matriz.array2object(lista)
         """ CAMADA DE ENTRADA PARA CAMADA OCULTA"""
         #print("\n------ CAMADA ENTRADA => CAMADA OCULTA -----")
         camada_oculta = Matriz.multiplicaDuasMatriz(self.pesos_entrada_oculta, entrada)
@@ -46,7 +46,7 @@ class NeuralNetwork(object):
 
     def backpropagation(self, entrada, esperado):
         """transformando a entrada em matriz"""
-        entrada = Matriz.array2matriz(entrada)
+        entrada = Matriz.array2object(entrada)
 
         """feedfoward"""
         """ CAMADA DE ENTRADA PARA CAMADA OCULTA"""
@@ -64,7 +64,7 @@ class NeuralNetwork(object):
         camada_saida.printMatriz()
 
         """backpropagation"""
-        esperado = Matriz.array2matriz(esperado)
+        esperado = Matriz.array2object(esperado)
 
         """SAIDA P/ OCULTA"""
         """calculo do erro"""
