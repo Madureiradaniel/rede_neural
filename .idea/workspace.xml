@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/matriz.py" beforeDir="false" afterPath="$PROJECT_DIR$/matriz.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/redeNeural.py" beforeDir="false" afterPath="$PROJECT_DIR$/redeNeural.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,7 +39,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.RedeNeural">
+  <component name="RunManager" selected="Python.main">
     <configuration name="RedeNeural" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="rede_neural_backpropagation" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -127,8 +126,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.RedeNeural" />
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.RedeNeural" />
         <item itemvalue="Python.redeNeural" />
         <item itemvalue="Python.matriz" />
       </list>

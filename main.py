@@ -41,9 +41,8 @@ elif op == 5:
     saida = [[1], [0], [0], [1]]
     """"""
 
-
-qtd_camadas_ocultas = 3
-criterio_parada = 0.05  # todos os elementos devem ter apenas essa diferenca da sua saida
+qtd_camadas_ocultas = 10
+criterio_parada = 0.01  # todos os elementos devem ter apenas essa diferenca da sua saida
 
 """ entrada, oculta, saida, learning reate"""
 redeNeural = NeuralNetwork(len(entrada[0]), qtd_camadas_ocultas, len(saida[0]), 0.1)
@@ -69,7 +68,9 @@ while (treino):
         for j in erro_saida:
             for k in j:
                 erro.append(abs(k))
-                # print(abs(k))
+                # print(abs(k))pra eu pegar
+    print("ERRO DA SAIDA\n")
+    print(erro)
 
     if all(elemento < criterio_parada for elemento in erro):
         treino = False

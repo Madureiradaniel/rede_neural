@@ -30,7 +30,7 @@ class Matriz(object):
     @staticmethod
     def transporMatriz(m1):
 
-        transposta = Matriz(m1.colunas,m1.linhas)
+        transposta = Matriz(m1.colunas, m1.linhas)
         for i in range(m1.linhas):
             for j in range(m1.colunas):
                 transposta.matriz[j][i] = m1.matriz[i][j]
